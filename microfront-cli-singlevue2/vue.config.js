@@ -9,7 +9,7 @@ module.exports = {
       postcss: {
         plugins: [
           prefixer({
-            prefix: `.${projectName}`
+            prefix: `#${projectName}`
           }) 
         ]
       }
@@ -19,7 +19,7 @@ module.exports = {
     devtool: 'none', // 不打包sourcemap
     output: {
       library: projectName, // 导出名称
-      libraryTarget: 'window' // 挂载目标,window.singleVue2
+      libraryTarget: 'umd' // 挂载目标,window.singleVue2
     },
     devServer: {
       port: '9002',

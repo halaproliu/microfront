@@ -5,7 +5,7 @@ const projectName = 'react'
 const customizePlugin = () => config => {
   config.output.publicPath = 'http://localhost:9003/'
   config.output.library = projectName
-  config.output.libraryTarget = 'window'
+  config.output.libraryTarget = 'umd'
   return config
 }
 
@@ -23,7 +23,7 @@ module.exports = {
     })),
     addPostcssPlugins([
       prefixer({
-        prefix: 'singleReact'
+        prefix: '#singleReact'
       })
     ]),
     customizePlugin()

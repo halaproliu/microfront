@@ -1,5 +1,5 @@
 <template>
-  <div>{{text}}</div>
+  <div class="txt">{{text}}</div>
 </template>
 
 <script>
@@ -15,6 +15,8 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-
+<style>
+.txt {
+  color: red;
+}
 </style>

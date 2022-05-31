@@ -5,7 +5,7 @@ import singleSpaVue from "single-spa-vue";
 Vue.config.productionTip = false
 // el 为子项目待挂载到父项目的DOM节点
 const vueOptions = {
-  el: "#vue2",
+  el: "#singleVue2",
   render: h => h(App)
 };
 

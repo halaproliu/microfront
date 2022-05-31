@@ -5,7 +5,7 @@ import App from './App.vue';
 import router from './router';
 
 const appOptions = {
-  el: '#vue',
+  el: '#singleVue',
   render() {
     return h(App, {
       // single-spa props are available on the "this" object. Forward them to your component as needed.
@@ -33,8 +33,15 @@ const vueLifecycles = singleSpaVue({
 });
 
 
-export const bootstrap = vueLifecycles.bootstrap;
-export const mount = vueLifecycles.mount;
-export const unmount = vueLifecycles.unmount;
+export const bootstrap = [
+  vueLifecycles.bootstrap
+]
+
+export const mount = [
+  vueLifecycles.mount
+]
+export const unmount = [
+  vueLifecycles.unmount
+];
 
 export default vueLifecycles;

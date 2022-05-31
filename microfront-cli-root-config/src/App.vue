@@ -11,9 +11,8 @@
         <router-link :to="menu.path">{{ menu.name }}</router-link>
       </el-menu-item>
     </el-menu>
-    <div>ddd</div>
-    <div id="vue"></div>
-    <div id="vue2"></div>
+    <div id="singleVue"></div>
+    <div id="singleVue2"></div>
     <div id="react-app"></div>
   </div>
 </template>
@@ -25,12 +24,8 @@ export default {
     return {
       activeIndex: '1',
       menus: [{
-        path: '/',
-        name: 'root',
-        index: '1'
-      }, {
         path: '/vue',
-        name: 'vue',
+        name: 'vue3',
         index: '2'
       }, {
         path: '/vue2',
