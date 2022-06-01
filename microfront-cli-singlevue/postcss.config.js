@@ -1,9 +1,9 @@
 module.exports ={
   plugins:{
-      'postcss-selector-namespace':{
-          namespace(){
-              return '#singleVue'
-          }
+    'postcss-selector-namespace':{
+      namespace(){
+          return '#singleVue'
       }
+    }
   }
 }

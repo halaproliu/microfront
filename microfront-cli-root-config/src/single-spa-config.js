@@ -42,8 +42,8 @@ const loadApp = (host, globalVar, bundle) => {
 }
 
 /**
- * @description 加载子应用使用
- * @param {*} url stats-webpack-plugin插件生成的manifest文件
+ * @description 加载子应用
+ * @param {*} url stats-webpack-plugin或者webpack-manifest-plugin插件生成的manifest文件
  * @param {*} bundle
  * @param {*} host 子应用host+port
  */
@@ -72,8 +72,8 @@ AppConfig.forEach(app => {
   // 注册微服务（子应用）
   registerApplication({
     name: app.projectName,
-    app: loadApp(app.host, app.projectName, app.bundle),
-    activeWhen: app.activeWhen,
+    app: loadApp(app.host, app.projectName, app.bundle), // 子应用为umd包，挂载在window下
+    activeWhen: app.activeWhen, // 当url匹配时展示子应用
     customProps: app.customProps
   })
 })

@@ -9,8 +9,10 @@ module.exports = {
   },
   configureWebpack: {
     output: {
-      library: projectName, // 导出名称
-      libraryTarget: 'umd' // 挂载目标,window.singleVue
+      library: {
+        name: projectName, // 导出名称
+        type: 'umd' // 挂载目标,window.singleVue
+      }
     },
     module: {
       rules: [
