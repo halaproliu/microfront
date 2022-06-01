@@ -12,7 +12,7 @@ const apps = [{
   bundle: 'app'
 }, {
   host: 'http://localhost:9003',
-  projectName: 'react',
+  projectName: 'singleReact',
   activeWhen: location => location.pathname.startsWith('/react'),
   customProps: {},
   bundle: 'main'

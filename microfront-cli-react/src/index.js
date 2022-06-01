@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -29,12 +29,13 @@ reportWebVitals();
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: App,
+  rootComponent: rootComponent,
   errorBoundary(err, info, props) {
     // Customize the root error boundary for your microfrontend here.
     return null;
   },
-  domElementGetter: () => document.getElementById('react-app')
+  renderType: 'createRoot',
+  domElementGetter: () => document.getElementById('singleReact')
 })
 
 export const bootstrap = [lifecycles.bootstrap]

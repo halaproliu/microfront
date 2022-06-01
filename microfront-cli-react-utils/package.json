@@ -1,0 +1,38 @@
+{
+  "name": "microfront-cli-react-utils",
+  "version": "1.0.0",
+  "description": "react mfe utils",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack --mode production",
+    "test": "npm run test"
+  },
+  "keywords": [
+    "mfe",
+    "react"
+  ],
+  "author": "halapro.liu",
+  "license": "ISC",
+  "dependencies": {
+    "antd": "^4.20.7",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
+    "postcss-nested": "^5.0.6",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.1"
+  }
+}

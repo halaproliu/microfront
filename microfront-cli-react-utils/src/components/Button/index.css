@@ -1,0 +1,10 @@
+.btn {
+  background: linear-gradient(skyblue, white 450px, yellowgreen 0);
+  padding: 10px;
+  width: 90px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid #fff;
+  outline: 0;
+  cursor: pointer;
+}

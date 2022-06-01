@@ -13,7 +13,7 @@
     </el-menu>
     <div id="singleVue"></div>
     <div id="singleVue2"></div>
-    <div id="react-app"></div>
+    <div id="singleReact"></div>
   </div>
 </template>
 
