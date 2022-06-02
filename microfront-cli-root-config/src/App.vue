@@ -2,7 +2,7 @@
   <div id="app">
     <el-menu
       class="app-menu"
-      default-active="1"
+      :default-active="activeIndex"
       background-color="#324157"
       text-color="#bfcbd9"
       active-text-color="#20a0ff"
