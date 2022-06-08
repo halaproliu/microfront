@@ -3,12 +3,26 @@
   <router-view></router-view>
 </template>
 
-<script>
+<script setup>
+import { onMounted, defineProps, toRefs } from 'vue'
+const props = defineProps({
+  name: {
+    type: String,
+  },
+  singleSpa: {
+    type: Object,
+  },
+  EventBus: {
+    type: Function,
+  },
+})
 
-export default {
-  name: 'App'
-}
+const { EventBus } = toRefs(props)
+onMounted(() => {
+  EventBus.value.on('msgFromRoot', data => {
+    console.log('vue:', data)
+  })
+})
 </script>
 
-<style>
-</style>
+<style></style>

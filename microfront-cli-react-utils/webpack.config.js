@@ -1,24 +1,26 @@
 const path = require('path')
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
+const ModuleFederationPlugin =
+  require('webpack').container.ModuleFederationPlugin
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const EslintPlugin = require('eslint-webpack-plugin')
 // const deps = require('./package.json').dependencies
 module.exports = {
   entry: './src/index',
   cache: false,
 
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
 
   optimization: {
-    minimize: false
+    minimize: false,
   },
   output: {
     publicPath: 'http://localhost:9004/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
+    extensions: ['.jsx', '.js', '.json'],
   },
   module: {
     rules: [
@@ -33,30 +35,30 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-            }
+            },
           },
           {
-            loader: 'postcss-loader'
-          }
-        ]
+            loader: 'postcss-loader',
+          },
+        ],
       },
       {
         test: /\.jsx?$/,
-        loader: require.resolve("babel-loader"),
+        loader: require.resolve('babel-loader'),
         options: {
-          presets: [require.resolve("@babel/preset-react")]
-        }
-      }
+          presets: [require.resolve('@babel/preset-react')],
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './public/index.ejs' }),
     new ModuleFederationPlugin({
-      name: "commonUtils",
+      name: 'commonUtils',
       // library: { type: "var" },
-      filename: "remoteEntry.js",
+      filename: 'remoteEntry.js',
       exposes: {
-        './MyButton': './src/components/Button'
+        './MyButton': './src/components/Button',
       },
       // shared: {
       //   ...deps,
@@ -70,17 +72,16 @@ module.exports = {
       //   },
       // }
     }),
+    // new EslintPlugin({ fix: true }),
     new CopyPlugin({
-      patterns: [
-        { from: 'public', to: '.' }
-      ]
-    })
+      patterns: [{ from: 'public', to: '.' }],
+    }),
   ],
   devServer: {
     host: '0.0.0.0',
     port: '9004',
     headers: {
-      "Access-Control-Allow-Origin": "*"
-    }
-  }
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
 }

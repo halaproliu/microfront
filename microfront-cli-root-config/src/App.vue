@@ -11,6 +11,7 @@
         <router-link :to="menu.path">{{ menu.name }}</router-link>
       </el-menu-item>
     </el-menu>
+    <!-- <div id="single-spa-application:singleVue"></div> -->
     <div id="singleVue"></div>
     <div id="singleVue2"></div>
     <div id="singleReact"></div>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { EventBus } from './appConfig'
 export default {
   name: 'App',
   data () {
@@ -37,6 +39,9 @@ export default {
         index: '4'
       }]
     }
+  },
+  created () {
+    EventBus.emit({name: 'msgFromRoot', data: 'root msg'})
   },
   methods: {
     handleSelect (key) {

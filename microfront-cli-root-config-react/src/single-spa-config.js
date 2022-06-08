@@ -1,28 +1,28 @@
-import { registerApplication, start } from 'single-spa' //导入single-spa
+import { registerApplication, start } from 'single-spa'; //导入single-spa
 import axios from 'axios'
 import AppConfig from './appConfig'
 
 /**
  * @name 加载异步js
  * @description 一个promise同步方法。可以代替创建一个script标签，然后加载服务
- * @param {*} url
- * @returns
+ * @param {*} url 
+ * @returns 
  */
 const runScript = async (url) => {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script')
-    script.src = url
+    const script = document.createElement('script');
+    script.src = url;
     script.onload = () => {
       resolve()
-    }
+    };
     script.onerror = (err) => {
       console.log(err)
       reject()
-    }
-    const firstScript = document.getElementsByTagName('script')[0]
-    firstScript.parentNode.insertBefore(script, firstScript)
-  })
-}
+    };
+    const firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(script, firstScript);
+  });
+};
 
 const isObject = (obj) => {
   return Object.prototype.toString.call(obj) === '[object Object]'
@@ -30,9 +30,9 @@ const isObject = (obj) => {
 
 /**
  * 加载子应用
- * @param {*} host
- * @param {*} globalVar
- * @returns
+ * @param {*} host 
+ * @param {*} globalVar 
+ * @returns 
  */
 const loadApp = (host, globalVar, bundle) => {
   return async () => {
@@ -48,14 +48,14 @@ const loadApp = (host, globalVar, bundle) => {
  * @param {*} host 子应用host+port
  */
 const getManifest = async (url, bundle, host) => {
-  const { data } = await axios.get(url)
-  const { entrypoints } = data
+  const { data } = await axios.get(url);
+  const { entrypoints } = data;
   let assets = []
   if (Array.isArray(entrypoints)) {
     assets = entrypoints
   } else {
     assets = entrypoints[bundle].assets
-    assets = assets.map((obj) => {
+    assets = assets.map(obj => {
       if (isObject(obj)) {
         return obj.name
       }
@@ -68,14 +68,14 @@ const getManifest = async (url, bundle, host) => {
   }
 }
 
-AppConfig.forEach((app) => {
+AppConfig.forEach(app => {
   // 注册微服务（子应用）
   registerApplication({
     name: app.projectName,
     app: loadApp(app.host, app.projectName, app.bundle), // 子应用为umd包，挂载在window下
     activeWhen: app.activeWhen, // 当url匹配时展示子应用
-    customProps: app.customProps,
+    customProps: app.customProps
   })
 })
 
-start() // 启动
+start(); // 启动

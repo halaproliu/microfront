@@ -21,9 +21,21 @@ if (!window.singleSpaNavigate) {
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: vueOptions,
+  handleInstance(app, props) {
+    console.log(app, props);
+    Vue.prototype.$eventBus = props.EventBus
+  }
 });
 
-export const bootstrap = vueLifecycles.bootstrap; // 启动时
+export const bootstrap = [
+  vueLifecycles.bootstrap,
+  (props, instance) => {
+    console.log(props);
+    console.log(instance);
+    Vue.prototype.$EventBus = props.EventBus
+    return Promise.resolve()
+  }
+]; // 启动时
 export const mount = vueLifecycles.mount; // 挂载时
 export const unmount = vueLifecycles.unmount; // 卸载时
 
