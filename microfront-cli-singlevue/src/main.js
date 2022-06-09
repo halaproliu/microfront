@@ -35,9 +35,29 @@ const vueLifecycles = singleSpaVue({
   },
 })
 
-export const bootstrap = [vueLifecycles.bootstrap]
+let el
+export const bootstrap = [
+  vueLifecycles.bootstrap,
+  () => {
+    el = document.getElementById('singleVue')
+    el.classList.add('application-wrappers')
+    return Promise.resolve()
+  }
+]
 
-export const mount = [vueLifecycles.mount]
-export const unmount = [vueLifecycles.unmount]
+export const mount = [
+  vueLifecycles.mount,
+  () => {
+    window.requestAnimationFrame(() => el.classList.add('application-mounting'))
+    return Promise.resolve()
+  }
+]
+export const unmount = [
+  vueLifecycles.unmount,
+  () => {
+    el.classList.remove('application-mounting')
+    return Promise.resolve()
+  }
+]
 
 export default vueLifecycles

@@ -42,8 +42,24 @@ const lifecycles = singleSpaReact({
   domElementGetter: () => document.getElementById('singleReact')
 })
 
-export const bootstrap = [lifecycles.bootstrap]
-export const mount = [lifecycles.mount]
-export const unmount = [lifecycles.unmount]
+let el
+export const bootstrap = async props => {
+  el = document.getElementById('singleReact')
+  el.classList.add('application-wrappers')
+  return lifecycles.bootstrap(props)
+}
+
+export const mount = async props => {
+  window.requestAnimationFrame(() => el.classList.add('application-mounting'))
+  return lifecycles.mount(props)
+}
+
+export const unmount = async props => {
+  el.classList.remove('application-mounting')
+  return lifecycles.unmount(props)
+}
+// export const bootstrap = [lifecycles.bootstrap]
+// export const mount = [lifecycles.mount]
+// export const unmount = [lifecycles.unmount]
 
 // export const { bootstrap, mount, unmount } = lifecycles;

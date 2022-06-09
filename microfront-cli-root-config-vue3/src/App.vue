@@ -7,7 +7,6 @@
     active-text-color="#20a0ff"
     @select="handleSelect">
     <el-menu-item :class="{'active': isActive(menu.path)}" v-for="menu in menus" :index="menu.index" :key="menu.name">
-      <!-- <router-link :to="menu.path">{{ menu.name }}</router-link> -->
       {{ menu.name }}
     </el-menu-item>
   </el-menu>
@@ -68,4 +67,11 @@ body
   color #20a0ff
   a
     color #20a0ff
+.application-wrappers {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.application-wrappers.application-mounting {
+  opacity: 1;
+}
 </style>
