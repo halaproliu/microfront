@@ -19,7 +19,7 @@ const props = defineProps({
 
 const { EventBus } = toRefs(props)
 onMounted(() => {
-  EventBus.value.on('msgFromRoot', data => {
+  EventBus?.value?.on('msgFromRoot', data => {
     console.log('vue:', data)
   })
 })

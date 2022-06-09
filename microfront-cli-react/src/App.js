@@ -6,10 +6,10 @@ import './App.css';
 function App() {
   const ctx = useContext(SingleSpaContext)
   useEffect(() => {
-    ctx?.EventBus.on('msgFromRoot', data => {
+    ctx?.EventBus?.on('msgFromRoot', data => {
       console.log(data)
     })
-  })
+  }, [ctx])
   return (
     <div className="App">
       react

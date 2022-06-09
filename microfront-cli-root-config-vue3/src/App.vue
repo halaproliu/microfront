@@ -18,6 +18,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { EventBus } from './appConfig'
 const activeIndex = ref('1')
 const menus = ref([{
   path: '/vue',
@@ -33,7 +34,9 @@ const menus = ref([{
   index: '4'
 }])
 
-onMounted(() => {})
+onMounted(() => {
+  EventBus.emit({name: 'msgFromRoot', data: 'vue3 root msg'})
+})
 
 
 const handleSelect = (key) => {
