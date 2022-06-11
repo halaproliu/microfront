@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [ //编译期间所有需要包括进来的库文件
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+    }
+  },
+  "compileOnSave": false,
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

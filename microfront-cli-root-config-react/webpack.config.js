@@ -1,18 +1,29 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const WebpackBar = require('webpackbar')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
+
+const resolve = (dir) => {
+  return path.resolve(process.cwd(), dir)
+}
 
 module.exports = {
-  entry: './src/index',
+  entry: path.join(__dirname, 'src/index'),
   cache: false,
 
   mode: 'development',
-  devtool: "source-map",
+  devtool: 'source-map',
 
   optimization: {
     runtimeChunk: true,
     removeAvailableModules: false,
     removeEmptyChunks: false,
     splitChunks: false,
-    usedExports: true
+    usedExports: true,
     // splitChunks: {
     //   cacheGroups: {//缓存组，这里是我们表演的舞台，抽取公共模块什么的，都在这个地方
     //     defaultVendors: {
@@ -30,45 +41,46 @@ module.exports = {
   },
   output: {
     publicPath: 'http://localhost:9000/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+    alias: {
+      '@': resolve('src'),
+    },
   },
   devServer: {
-    port: 9000
+    port: 9000,
   },
   module: {
     rules: [
       {
+        test: /\.(mjs|jsx?|tsx?)$/,
+        exclude: /node-modules/,
+        include: [
+          resolve('src')
+        ],
+        use: 'babel-loader'
+      },
+      {
         test: /\.css$/,
-        // exclude: /node_modules/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
-      },
-      {
-        test: /\.jsx?$/,
-        loader: require.resolve("babel-loader"),
-        options: {
-          presets: [require.resolve("@babel/preset-react")]
-        }
+        test: /\.styl$/,
+        use: ['style-loader', 'css-loader', 'stylus-loader']
       }
-    ],
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './public/index.html' })
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+    }),
+    new WebpackBar(),
+    new FriendlyErrorsPlugin(),
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin()
   ]
 }

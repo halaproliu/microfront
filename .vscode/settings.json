@@ -1,0 +1,11 @@
+{
+  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.workingDirectories": ["microfront-cli-root*"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.formatOnSave": true
+}

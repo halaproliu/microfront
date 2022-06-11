@@ -1,43 +1,43 @@
-import { registerApplication, start } from 'single-spa'; //导入single-spa
+import { registerApplication, start } from 'single-spa' //导入single-spa
 import axios from 'axios'
 import AppConfig from './appConfig'
 
 /**
  * @name 加载异步js
  * @description 一个promise同步方法。可以代替创建一个script标签，然后加载服务
- * @param {*} url 
- * @returns 
+ * @param {*} url
+ * @returns
  */
-const runScript = async (url) => {
+const runScript = async (url: string) => {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = url;
-    script.onload = () => {
-      resolve()
-    };
+    const script = document.createElement('script')
+    script.src = url
+    script.onload = (res) => {
+      resolve(res)
+    }
     script.onerror = (err) => {
       console.log(err)
       reject()
-    };
-    const firstScript = document.getElementsByTagName('script')[0];
-    firstScript.parentNode.insertBefore(script, firstScript);
-  });
-};
+    }
+    const firstScript: HTMLElement = document.getElementsByTagName('script')[0]
+    firstScript?.parentNode?.insertBefore(script, firstScript)
+  })
+}
 
-const isObject = (obj) => {
+const isObject = (obj: object) => {
   return Object.prototype.toString.call(obj) === '[object Object]'
 }
 
 /**
  * 加载子应用
- * @param {*} host 
- * @param {*} globalVar 
- * @returns 
+ * @param {*} host
+ * @param {*} globalVar
+ * @returns
  */
-const loadApp = (host, globalVar, bundle) => {
+const loadApp = (host: string, globalVar: string, bundle: string) => {
   return async () => {
     await getManifest(`${host}/asset-manifest.json`, bundle, host)
-    return window[globalVar]
+    return (window as any)[globalVar]
   }
 }
 
@@ -47,15 +47,15 @@ const loadApp = (host, globalVar, bundle) => {
  * @param {*} bundle
  * @param {*} host 子应用host+port
  */
-const getManifest = async (url, bundle, host) => {
-  const { data } = await axios.get(url);
-  const { entrypoints } = data;
+const getManifest = async (url: string, bundle: string, host: string) => {
+  const { data } = await axios.get(url)
+  const { entrypoints } = data
   let assets = []
   if (Array.isArray(entrypoints)) {
     assets = entrypoints
   } else {
     assets = entrypoints[bundle].assets
-    assets = assets.map(obj => {
+    assets = assets.map((obj: any) => {
       if (isObject(obj)) {
         return obj.name
       }
@@ -68,7 +68,7 @@ const getManifest = async (url, bundle, host) => {
   }
 }
 
-AppConfig.forEach(app => {
+AppConfig.forEach((app) => {
   // 注册微服务（子应用）
   registerApplication({
     name: app.projectName,
@@ -78,4 +78,4 @@ AppConfig.forEach(app => {
   })
 })
 
-start(); // 启动
+start() // 启动
