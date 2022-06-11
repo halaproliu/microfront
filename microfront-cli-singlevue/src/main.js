@@ -52,12 +52,10 @@ export const mount = [
     return Promise.resolve()
   }
 ]
-export const unmount = [
-  vueLifecycles.unmount,
-  () => {
-    el.classList.remove('application-mounting')
-    return Promise.resolve()
-  }
-]
+
+export function unmount(props) {
+  el.classList.remove('application-mounting')
+  return vueLifecycles.unmount(props)
+}
 
 export default vueLifecycles
