@@ -1,28 +1,38 @@
 import EventBusService from './libs/rxjs'
 
 export const EventBus = new EventBusService()
+
+const type = 'history'
+
+const activeWhen = (location, key) => {
+  if (type === 'history') {
+    return location.pathname.startsWith(key)
+  } else {
+    return location.hash.startsWith(`#${key}`)
+  }
+}
 const apps = [
   {
     host: 'http://localhost:9001',
     projectName: 'singleVue',
-    activeWhen: (location) => location.pathname.startsWith('/vue'),
+    activeWhen: (location) => activeWhen(location, '/vue'),
     customProps: { EventBus },
-    bundle: 'app',
+    bundle: 'app'
   },
   {
     host: 'http://localhost:9002',
     projectName: 'singleVue2',
-    activeWhen: (location) => location.pathname.startsWith('/vue2'),
+    activeWhen: (location) => activeWhen(location, '/vue2'),
     customProps: { EventBus },
-    bundle: 'app',
+    bundle: 'app'
   },
   {
     host: 'http://localhost:9003',
     projectName: 'singleReact',
-    activeWhen: (location) => location.pathname.startsWith('/react'),
+    activeWhen: (location) => activeWhen(location, '/react'),
     customProps: { EventBus },
-    bundle: 'main',
-  },
+    bundle: 'main'
+  }
 ]
 
 export default apps

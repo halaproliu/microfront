@@ -3,7 +3,7 @@ import { ConfigProvider, Layout, Menu } from 'antd'
 import {
   LinkOutlined
 } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN'
 import moment from 'moment'
@@ -39,9 +39,15 @@ const App: FC = () => {
         </Sider>
         <Layout>
           <Content>
-            <div id="singleVue"></div>
-            <div id="singleVue2"></div>
-            <div id="singleReact"></div>
+            <Routes>
+              <Route path="*" element={
+                <>
+                  <div id="singleVue"></div>
+                  <div id="singleVue2"></div>
+                  <div id="singleReact"></div>
+                </>
+              }></Route>
+            </Routes>
           </Content>
         </Layout>
       </Layout>
