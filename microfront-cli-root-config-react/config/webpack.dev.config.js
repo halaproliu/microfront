@@ -4,6 +4,9 @@ const webpack = require('webpack')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
+  output: {
+    filename: 'static/js/bundle.js'
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]

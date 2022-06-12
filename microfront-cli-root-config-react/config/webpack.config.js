@@ -20,7 +20,8 @@ module.exports = {
   output: {
     publicPath: 'http://localhost:9000/',
     filename: '[name].js',
-    path: resolve('dist')
+    chunkFilename: 'static/js/[name].[chunkhash:8].js',
+    path: resolve('build')
   },
   optimization: {
     minimize: true,
