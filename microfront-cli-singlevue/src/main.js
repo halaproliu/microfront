@@ -3,6 +3,9 @@ import singleSpaVue from 'single-spa-vue'
 
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
 
 const appOptions = {
   el: '#singleVue', // 若提供el属性，则挂载在el上，否则是，single-spa-application:${name}上，name为基座项目注册子应用设置的name
@@ -24,7 +27,7 @@ const appOptions = {
 }
 
 if (!window.singleSpaNavigate) {
-  createApp(App).use(router).mount('#app')
+  createApp(App).use(router).use(pinia).mount('#app')
 }
 
 const vueLifecycles = singleSpaVue({
@@ -32,6 +35,7 @@ const vueLifecycles = singleSpaVue({
   appOptions,
   handleInstance(app) {
     app.use(router)
+    app.use(pinia)
   },
 })
 
