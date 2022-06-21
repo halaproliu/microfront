@@ -3,7 +3,7 @@ import EventBusService from './libs/rxjs'
 export const EventBus = new EventBusService()
 
 const type = 'history'
-const idPrd = process.env.NODE_ENV === 'production'
+const isPrd = process.env.NODE_ENV === 'production'
 
 const activeWhen = (location, key) => {
   if (type === 'history') {
