@@ -180,3 +180,8 @@ docker network create microapp
 cd microfront-cli-root-config
 docker build -t root-config .
 docker run -d --network microapp -p 9000:80 root-config
+
+### 更新配置
+docker cp nginx/default.conf root-config:/etc/nginx/conf.d
+docker cp dist root-config:/usr/share/nginx/html/
+docker restart root-config

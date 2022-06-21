@@ -2,7 +2,7 @@ const StatsPlugin = require('stats-webpack-plugin')
 const prefixer = require('postcss-prefix-selector')
 const projectName = 'singleVue2'
 module.exports = {
-  publicPath: '//localhost:9002',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : 'http://localhost:9002',
   css: {
     extract: false,
     loaderOptions: {
@@ -10,7 +10,7 @@ module.exports = {
         plugins: [
           prefixer({
             prefix: `#${projectName}`
-          }) 
+          })
         ]
       }
     }
@@ -33,7 +33,7 @@ module.exports = {
         chunkModules: false,
         entryPoints: true,
         source: false,
-        chunks:false,
+        chunks: false,
         modules: false,
         assets: false,
         children: false,
