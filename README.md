@@ -171,3 +171,12 @@ module.exports ={
     template添加子应用挂载的dom对应id
   - microfront-cli-root-config/src/router/index.js
     添加子应用对应的路由（否则无法正确展示子应用）
+
+
+### 部署云服务器
+
+# 创建docker network
+docker network create microapp
+cd microfront-cli-root-config
+docker build -t root-config .
+docker run -d --network microapp -p 9000:80 root-config
