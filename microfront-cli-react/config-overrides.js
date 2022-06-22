@@ -1,4 +1,3 @@
-const path = require('path')
 const { override, addWebpackPlugin, overrideDevServer } = require('customize-cra')
 const StatsPlugin = require('stats-webpack-plugin')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
@@ -19,7 +18,6 @@ const customizePlugin = () => config => {
   config.output.publicPath = 'http://localhost:9003/'
   config.output.library = projectName
   config.output.libraryTarget = 'umd'
-  config.output.path = path.resolve(__dirname, 'dist')
   return config
 }
 
