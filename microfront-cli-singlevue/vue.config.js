@@ -3,7 +3,7 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 const projectName = 'singleVue'
 // const deps = require('./package.json').dependencies
 module.exports = {
-  publicPath: `${process.env.NODE_ENV === 'production' ? './' : process.env.VUE_APP_BASE_URL}:${process.env.VUE_APP_PORT}`,
+  publicPath: process.env.NODE_ENV === 'production' ? './' : `${process.env.VUE_APP_BASE_URL}:${process.env.VUE_APP_PORT}`,
   css: {
     extract: false
   },
