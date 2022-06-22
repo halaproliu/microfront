@@ -3,7 +3,7 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 const projectName = 'singleVue'
 // const deps = require('./package.json').dependencies
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? 'http://124.223.2.144' : 'http://localhost:9001',
+  publicPath: process.env.NODE_ENV === 'production' ? 'http://124.223.2.144:9001' : 'http://localhost:9001',
   css: {
     extract: false
   },
