@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --mode production",
-    "test": "npm run test"
+    "test": "npm run test",
+    "image": "docker build -t reactutils .",
+    "deploy": "docker run -d --network microapp -p 9004:80 reactutils"
   },
   "keywords": [
     "mfe",
