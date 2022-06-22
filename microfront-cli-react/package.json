@@ -23,8 +23,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "image": "docker build -t singleReact .",
-    "deploy": "docker run -d --network microapp -p 9003:80 singleReact"
+    "image": "docker build -t singlereact .",
+    "deploy": "docker run -d --network microapp -p 9003:80 singlereact"
   },
   "eslintConfig": {
     "extends": [
