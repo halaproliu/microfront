@@ -3,7 +3,7 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 const projectName = 'singleVue'
 // const deps = require('./package.json').dependencies
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? 'http://124.223.2.144:9001' : 'http://localhost:9001',
+  publicPath: `${process.env.VUE_APP_BASE_URL}:${process.env.VUE_APP_PORT}`,
   css: {
     extract: false
   },
@@ -27,7 +27,7 @@ module.exports = {
       ]
     },
     devServer: {
-      port: '9001',
+      port: process.env.VUE_APP_PORT,
       headers: {
         'Access-Control-Allow-Origin': '*'
       },
@@ -38,7 +38,7 @@ module.exports = {
       new ModuleFederationPlugin({
         name: 'singleVue',
         remotes: {
-          'commonUtils': 'commonUtils@http://localhost:9004/remoteEntry.js'
+          'commonUtils': `commonUtils@${process.env.VUE_APP_BASE_URL}:9004/remoteEntry.js`
         },
         // shared: {
         //   ...deps,
