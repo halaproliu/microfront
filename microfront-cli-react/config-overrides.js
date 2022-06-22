@@ -15,7 +15,7 @@ const customizePlugin = () => config => {
       ]
     }
   });
-  config.output.publicPath = 'http://localhost:9003/'
+  config.output.publicPath = `${process.env.REACT_APP_HOST}:${process.env.PORT}/`
   config.output.library = projectName
   config.output.libraryTarget = 'umd'
   return config
@@ -39,7 +39,7 @@ module.exports = {
       new ModuleFederationPlugin({
         name: 'singleReact',
         remotes: {
-          'commonUtils': 'commonUtils@http://localhost:9004/remoteEntry.js'
+          'commonUtils': `commonUtils@${process.env.REACT_APP_HOST}:9004/remoteEntry.js`
         }
       })
     ),
@@ -47,9 +47,10 @@ module.exports = {
   ),
   devServer: overrideDevServer(
     config => {
-      config.port = '9003'
+      config.port = process.env.PORT
       config.headers = config.headers || {}
       config.headers['Access-Control-Allow-Origin'] = '*'
+      config.historyApiFallback = true
       return config
     }
   )
