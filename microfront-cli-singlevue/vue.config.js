@@ -38,7 +38,7 @@ module.exports = {
       new ModuleFederationPlugin({
         name: 'singleVue',
         remotes: {
-          'commonUtils': `commonUtils@${process.env.VUE_APP_BASE_URL}:9004/remoteEntry.js`
+          'commonUtils': `commonUtils@${process.env.NODE_ENV ? 'http://124.223.2.144' : 'http://localhost'}:9004/remoteEntry.js`
         },
         // shared: {
         //   ...deps,
