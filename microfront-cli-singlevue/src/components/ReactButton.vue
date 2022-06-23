@@ -8,7 +8,7 @@ import { ref, onMounted, onBeforeUnmount, onUpdated, defineComponent } from 'vue
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 // const firstLoad = new Promise(resolve => setTimeout(resolve, 1000));
-import { loadComponent, useDynamicScript } from '@/utils/asyncLoadModules'
+// import { loadComponent, useDynamicScript } from '@/utils/asyncLoadModules'
 
 async function fetchButton() {
   // simulate long network delay
