@@ -1,6 +1,6 @@
 #!/bin/bash
 # 获取containerId
-containerid=docker ps -a | grep reactutils | awk '{print $1}'
+containerid=`docker ps -a | grep reactutils | awk '{print $1}'`
 # 获取镜像ID
 # imageid=docker images | grep reactutils | awk '${print $3}'
 # 停止容器
