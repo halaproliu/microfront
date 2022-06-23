@@ -4,6 +4,10 @@ containerid=`docker ps -a | grep reactutils | awk '{print $1}'`
 if [ ! $containerid ];
 then
   echo "reactutils is not exists"
+  # 编译镜像
+  npm run image
+  # 发布容器
+  npm run deploy
 fi
 # 获取镜像ID
 # imageid=docker images | grep reactutils | awk '${print $3}'
