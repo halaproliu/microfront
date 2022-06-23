@@ -40,7 +40,7 @@ else
   docker rm $containerid
   handleresult "删除容器${appname}成功，容器id:${containerid}"
   # 删除镜像
-  docker images | grep reactutils | awk '{print $3}' | xargs docker rmi
+  docker images | grep ${appname} | awk '{print $3}' | xargs docker rmi
   handleresult "删除镜像${appname}成功"
   cd $folder
   # 编译镜像
