@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "image": "docker build -t root-config .",
-    "deploy": "docker run -d --network microapp -p 9000:80 root-config"
+    "deploy": "docker run -d --network microapp -p 80:80 root-config"
   },
   "dependencies": {
     "axios": "^0.27.2",
