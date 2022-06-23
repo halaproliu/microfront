@@ -4,9 +4,9 @@
   "description": "single-spa ",
   "main": "index.js",
   "scripts": {
-    "build": "bash build.sh",
-    "del": "bash del.sh",
-    "delall": "bash delall.sh"
+    "build": "bash .bin/build.sh",
+    "del": "bash .bin/deploy.sh",
+    "delall": "bash .bin/delall.sh"
   },
   "repository": {
     "type": "git",

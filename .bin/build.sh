@@ -1,5 +1,6 @@
 #!/bin/bash
-. log.sh
+currentDir=$(dirname $0)
+. $currentDir/log.sh
 index=0
 
 # 显示project列表

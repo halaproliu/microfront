@@ -1,5 +1,6 @@
 #!/bin/bash
-. log.sh
+currentDir=$(dirname $0)
+. $currentDir/log.sh
 function handleresult(){
   if [ $? -eq 0 ];
   then

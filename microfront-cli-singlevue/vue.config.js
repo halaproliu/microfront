@@ -1,6 +1,8 @@
 const path = require('path')
 const StatsPlugin = require('stats-webpack-plugin')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
+const esbuild = require('esbuild')
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const projectName = 'singleVue'
 // const deps = require('./package.json').dependencies
 module.exports = {
@@ -14,6 +16,16 @@ module.exports = {
         name: projectName, // 导出名称
         type: 'umd' // 挂载目标,window.singleVue
       }
+    },
+    optimization: {
+      minimizer: [
+        new ESBuildMinifyPlugin({
+          target: 'es2015',
+          legalComments: 'none', // 去除注释
+          css: true, // 压缩 css
+          implementation: esbuild // 自定义 esbuild instance 实现
+        })
+      ]
     },
     resolve: {
       alias: {
