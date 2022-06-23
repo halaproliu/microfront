@@ -47,5 +47,6 @@ else
   handleresult '编译镜像成功'
   # 发布容器
   npm run deploy
-  handleresult "${appname}:容器发布成功,容器id:$(docker ps -a | grep $appname | awk '{print $1)"
+  resid=$(docker ps -a | grep $appname | awk '{print $1}')
+  handleresult "${appname}:容器发布成功,容器id:${resid}"
 fi
