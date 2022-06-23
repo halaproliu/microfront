@@ -16,6 +16,7 @@ else
   docker stop $containerid
   # 删除容器
   docker rm $containerid
+  cd microfront-cli-$appname
   # 删除镜像
   docker images | grep reactutils | awk '{print $3}' | xargs docker rmi
   # 编译镜像
