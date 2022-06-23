@@ -10,23 +10,23 @@ import ReactDOM from 'react-dom/client'
 // const firstLoad = new Promise(resolve => setTimeout(resolve, 1000));
 import { loadComponent, useDynamicScript } from '@/utils/asyncLoadModules'
 
-// async function fetchButton() {
-//   // simulate long network delay
-//   // await firstLoad;
-
-//   // uncomment to simulate failed load
-//   // throw new Error("Failed to load button from remote.");
-//   return (await import('commonUtils/MyButton')).default;
-// }
 async function fetchButton() {
-  const bool = await useDynamicScript('http://localhost:9004/remoteEntry.js')
-  if (bool) {
-    const Component = await loadComponent('commonUtils', './MyButton')
-    console.log(Component)
-    return Component
-  }
-  return {}
+  // simulate long network delay
+  // await firstLoad;
+
+  // uncomment to simulate failed load
+  // throw new Error("Failed to load button from remote.");
+  return (await import('commonUtils/MyButton')).default;
 }
+// async function fetchButton() {
+//   const bool = await useDynamicScript('http://localhost:9004/remoteEntry.js')
+//   if (bool) {
+//     const Component = await loadComponent('commonUtils', './MyButton')
+//     console.log(Component)
+//     return Component
+//   }
+//   return {}
+// }
 
 export default defineComponent({
   props: {

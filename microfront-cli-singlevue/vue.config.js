@@ -42,10 +42,10 @@ module.exports = {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: 'singleVue'
-        // remotes: {
-        //   'commonUtils': 'commonUtils@http://localhost:9004/remoteEntry.js'
-        // },
+        name: 'singleVue',
+        remotes: {
+          'commonUtils': `commonUtils@${process.env.VUE_APP_BASE_URL}:${process.env.VUE_APP_PORT}/remoteEntry.js`
+        }
         // shared: {
         //   ...deps,
         //   react: {
