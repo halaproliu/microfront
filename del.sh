@@ -7,7 +7,6 @@ elif [ $appname == 'singlereact' ];
 then
   folder='microfront-cli-react'
 else
-then
   folder=microfront-cli-$appname
 fi
 # 获取containerId
