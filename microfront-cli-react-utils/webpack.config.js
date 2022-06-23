@@ -38,7 +38,8 @@ module.exports = {
     minimize: false,
   },
   output: {
-    publicPath: isPrd ? './' : `http://localhost:${process.env.PORT}/`,
+    // publicPath: isPrd ? './' : `http://localhost:${process.env.PORT}/`,
+    publicPath: `${REACT_APP_HOST}:${process.env.PORT}`,
     filename: '[name].js',
   },
   resolve: {
