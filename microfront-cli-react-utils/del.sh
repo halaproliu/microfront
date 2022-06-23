@@ -1,6 +1,10 @@
 #!/bin/bash
 # 获取containerId
 containerid=`docker ps -a | grep reactutils | awk '{print $1}'`
+if [ ! $containerid ];
+then
+  echo "reactutils is not exists"
+fi
 # 获取镜像ID
 # imageid=docker images | grep reactutils | awk '${print $3}'
 # 停止容器
