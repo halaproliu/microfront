@@ -1,3 +1,4 @@
+const path = require('path')
 const StatsPlugin = require('stats-webpack-plugin')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
 const projectName = 'singleVue'
@@ -12,6 +13,11 @@ module.exports = {
       library: {
         name: projectName, // 导出名称
         type: 'umd' // 挂载目标,window.singleVue
+      }
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src')
       }
     },
     module: {
@@ -36,10 +42,10 @@ module.exports = {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: 'singleVue',
-        remotes: {
-          'commonUtils': 'commonUtils@http://124.223.2.144:9004/remoteEntry.js'
-        },
+        name: 'singleVue'
+        // remotes: {
+        //   'commonUtils': 'commonUtils@http://localhost:9004/remoteEntry.js'
+        // },
         // shared: {
         //   ...deps,
         //   react: {

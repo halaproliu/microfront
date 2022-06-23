@@ -15,6 +15,7 @@
     <div id="singleVue"></div>
     <div id="singleVue2"></div>
     <div id="singleReact"></div>
+    <div id="vite"></div>
   </div>
 </template>
 
@@ -37,6 +38,10 @@ export default {
         path: '/react',
         name: 'react',
         index: '4'
+      }, {
+        path: '/vite',
+        name: 'vite',
+        index: '5'
       }]
     }
   },

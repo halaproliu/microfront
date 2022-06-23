@@ -4,7 +4,7 @@ import singleSpaVue from 'single-spa-vue'
 import App from './App.vue'
 
 const appOptions = {
-  el: '#singleViteVue', // 若提供el属性，则挂载在el上，否则是，single-spa-application:${name}上，name为基座项目注册子应用设置的name
+  el: '#vite', // 若提供el属性，则挂载在el上，否则是，single-spa-application:${name}上，name为基座项目注册子应用设置的name
   render() {
     return h(App, {
       // single-spa props are available on the "this" object. Forward them to your component as needed.
