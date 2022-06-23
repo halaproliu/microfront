@@ -38,10 +38,6 @@ export default {
         path: '/react',
         name: 'react',
         index: '4'
-      }, {
-        path: '/vite',
-        name: 'vite',
-        index: '5'
       }]
     }
   },

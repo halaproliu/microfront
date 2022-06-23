@@ -78,13 +78,4 @@ AppConfig.forEach((app) => {
   })
 })
 
-registerApplication({
-  name: 'vite',
-  app: async () => {
-    await runScript('http://localhost:9005/src/main.js')
-    return window.vite
-  },
-  activeWhen: (location) => location.pathname.startsWith('/vite')
-})
-
 start() // 启动
