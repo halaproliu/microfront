@@ -1,11 +1,21 @@
 #!/bin/bash
 appname=$1
+if [ $appname == 'reactutils' ];
+then
+  folder='microfront-cli-react-utils'
+else if [ $appname == 'singlereact' ];
+then
+  folder='microfront-cli-react'
+else
+then
+  folder=microfront-cli-$appname
+fi
 # 获取containerId
 containerid=`docker ps -a | grep $appname | awk '{print $1}'`
 if [ ! $containerid ];
 then
   echo "$appname is not exists"
-  cd microfront-cli-$appname
+  cd $folder
   # 编译镜像
   npm run image
   # 发布容器
@@ -19,7 +29,7 @@ else
   docker rm $containerid
   # 删除镜像
   docker images | grep reactutils | awk '{print $3}' | xargs docker rmi
-  cd microfront-cli-$appname
+  cd $folder
   # 编译镜像
   npm run image
   # 发布容器
