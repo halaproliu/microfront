@@ -11,7 +11,6 @@ const cwd = process.cwd()
 const rawArgv = process.argv.slice(2)
 const argv = minimist(rawArgv)
 const mode = argv.mode
-const isPrd = mode === 'production'
 const basePath = path.resolve(cwd, `.env${mode ? `.${mode}` : ``}`)
 const localPath = `${basePath}.local`
 const loadEnv = envPath => {
