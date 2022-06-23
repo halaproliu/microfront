@@ -5,6 +5,7 @@ containerid=`docker ps -a | grep $appname | awk '{print $1}'`
 if [ ! $containerid ];
 then
   echo "$appname is not exists"
+  cd microfront-cli-$appname
   # 编译镜像
   npm run image
   # 发布容器
