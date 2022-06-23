@@ -1,8 +1,9 @@
 #!/bin/bash
+. log.sh
 function handleresult(){
   if [ $? -eq 0 ];
   then
-    echo $1;
+    log 6 $1;
   else
     exit 0;
   fi

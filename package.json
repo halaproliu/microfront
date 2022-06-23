@@ -1,0 +1,25 @@
+{
+  "name": "microfront",
+  "version": "1.0.0",
+  "description": "single-spa ",
+  "main": "index.js",
+  "scripts": {
+    "build": "bash build.sh",
+    "del": "bash del.sh",
+    "delall": "bash delall.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halaproliu/microfront.git"
+  },
+  "keywords": [
+    "single-spa",
+    "microfront"
+  ],
+  "author": "halapro.liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/halaproliu/microfront/issues"
+  },
+  "homepage": "https://github.com/halaproliu/microfront#readme"
+}
