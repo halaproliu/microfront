@@ -3,7 +3,7 @@ appname=$1
 if [ $appname == 'reactutils' ];
 then
   folder='microfront-cli-react-utils'
-else if [ $appname == 'singlereact' ];
+elif [ $appname == 'singlereact' ];
 then
   folder='microfront-cli-react'
 else
