@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "test": "npm run test",
     "image": "docker build -t reactutils .",
-    "deploy": "docker run -d --network microapp -p 9004:9004 reactutils"
+    "deploy": "docker run -d --network microapp -p 9004:9004 reactutils",
+    "del": "bash del.sh reactutils"
   },
   "keywords": [
     "mfe",
