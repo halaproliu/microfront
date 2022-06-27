@@ -1,3 +1,13 @@
 {
-  "recommendations": ["dbaeumer.vscode-eslint", "eamodio.gitlens", "vscode-icons-team.vscode-icons"]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "vscode-icons-team.vscode-icons",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "aaron-bond.better-comments",
+    "obkoro1.korofilehead",
+    "whtouche.vscode-js-console-utils"
+  ]
 }
