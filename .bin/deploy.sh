@@ -21,7 +21,7 @@ else
 fi
 # 获取containerId
 containerid=`docker ps -a | grep $appname | awk '{print $1}'`
-if [ ! $containerid ];
+if [[ ! $containerid ]];
 then
   echo "$appname is not exists"
   cd $folder
