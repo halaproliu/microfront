@@ -9,7 +9,7 @@ module.exports = {
       postcss: {
         plugins: [
           prefixer({
-            prefix: `#${projectName}`
+            prefix: `.${projectName}`
           })
         ]
       }

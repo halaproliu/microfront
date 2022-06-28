@@ -4,7 +4,7 @@ module.exports = {
       namespace(css) {
         console.log(css)
         if (css.includes('element-variables.scss')) return ''
-        return '#singleVue'
+        return '.singleVue'
       }
     }
   }

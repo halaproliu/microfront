@@ -9,7 +9,7 @@ const customizePlugin = () => config => {
         require("postcss-selector-namespace")({
           namespace() {
             // 前缀，如果有全局样式不需要添加的，也可以在这里过滤
-            return `#${projectName}`;
+            return `.${projectName}`;
           },
         }),
       ]
