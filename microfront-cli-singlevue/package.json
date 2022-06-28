@@ -33,7 +33,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "html-webpack-plugin": "^5.5.0",
-    "postcss-selector-namespace": "^3.0.1",
+    "postcss-prefix-selector": "^1.16.0",
     "stats-webpack-plugin": "^0.7.0",
     "webpack-manifest-plugin": "^5.0.0"
   },

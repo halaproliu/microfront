@@ -5,10 +5,22 @@ const esbuild = require('esbuild')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const projectName = 'singleVue'
 // const deps = require('./package.json').dependencies
+const prefixer = require('postcss-prefix-selector')
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : `${process.env.VUE_APP_BASE_URL}:${process.env.VUE_APP_PORT}`,
   css: {
-    extract: false
+    extract: false,
+    loaderOptions: {
+      postcss: {
+        postcssOptions: {
+          plugins: [
+            prefixer({
+              prefix: '.singlevue'
+            })
+          ]
+        }
+      }
+    }
   },
   configureWebpack: {
     output: {
