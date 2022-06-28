@@ -15,7 +15,7 @@ module.exports = {
         postcssOptions: {
           plugins: [
             prefixer({
-              prefix: '.singlevue'
+              prefix: '.singleVue'
             })
           ]
         }
