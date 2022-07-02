@@ -4,7 +4,13 @@
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount, onUpdated, defineComponent } from 'vue'
+import {
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  onUpdated,
+  defineComponent,
+} from 'vue'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 // const firstLoad = new Promise(resolve => setTimeout(resolve, 1000));
@@ -16,7 +22,7 @@ async function fetchButton() {
 
   // uncomment to simulate failed load
   // throw new Error("Failed to load button from remote.");
-  return (await import('commonUtils/MyButton')).default;
+  return (await import('commonUtils/MyButton')).default
 }
 // async function fetchButton() {
 //   const bool = await useDynamicScript('http://localhost:9004/remoteEntry.js')
@@ -31,16 +37,16 @@ async function fetchButton() {
 export default defineComponent({
   props: {
     text: String,
-    onClick: Function
+    onClick: Function,
   },
   setup(props) {
-    const root = ref(null);
-    const error = ref(null);
-    const ButtonComponent = ref(null);
+    const root = ref(null)
+    const error = ref(null)
+    const ButtonComponent = ref(null)
     const app = ref(null)
 
     function updateReactComponent() {
-      if (!ButtonComponent.value || !!error.value) return;
+      if (!ButtonComponent.value || !!error.value) return
       app.value = ReactDOM.createRoot(root.value)
       app.value.render(React.createElement(ButtonComponent.value, props))
     }
@@ -49,20 +55,21 @@ export default defineComponent({
       app.value && app.value.unmount()
     }
 
-    onMounted(updateReactComponent);
-    onUpdated(updateReactComponent);
-    onBeforeUnmount(unmountReactComponent);
+    onMounted(updateReactComponent)
+    onUpdated(updateReactComponent)
+    onBeforeUnmount(unmountReactComponent)
 
     fetchButton()
-      .then(b => {
-        ButtonComponent.value = b;
-        updateReactComponent();
+      .then((b) => {
+        console.log(b)
+        ButtonComponent.value = b
+        updateReactComponent()
       })
-      .catch(e => {
-        error.value = e;
-      });
+      .catch((e) => {
+        error.value = e
+      })
 
-    return { root, error };
-  }
+    return { root, error }
+  },
 })
 </script>
